@@ -1,1 +1,0 @@
-# Make-Magic-Wordpress-Plugin
