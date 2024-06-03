@@ -39,7 +39,6 @@ class FrontendPanel {
 		new Frontend\FrontendEnqueue();
 		// Ensure the REST API routes are registered.
 		if ( class_exists( 'MakeMagic\Frontend\API' ) ) {
-			error_log( 'MakeMagic\Admin\API class founded' );
 			new API();
 		}
 		$this->table_name = $wpdb->prefix . 'makemagic_things';
