@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<ruleset name="WordPress Coding Standards">
+    <description>A custom set of code standard rules to check for WordPress code.</description>
+    <!-- How to scan -->
+    <arg value="sp"/><!-- Show sniff and progress -->
+    <arg name="basepath" value="./"/><!-- Strip the file paths down to the relevant bit -->
+    <arg name="extensions" value="php"/>
+    <arg name="parallel" value="10"/><!-- Enables parallel processing when available for faster results. -->
+    <arg name="cache" value=".phpcs.cache"/>
+    <!-- Include only the specific rules we want to enforce -->
+    <rule ref="WordPress.Files.FileName.InvalidClassFileName" />
+    <rule ref="WordPress.Files.FileName.NotHyphenatedLowercase" />
+
+     <rule ref="WordPress">
+        <exclude name="WordPress.Files.FileName.InvalidClassFileName" />
+        <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
+    </rule>
+     <!-- Exclude specific filename and class name rules -->
+    <rule ref="WordPress.Files.FileName.InvalidClassFileName">
+		<exclude-pattern>*/inc/*</exclude-pattern>
+        <exclude-pattern>/inc/Installer.php</exclude-pattern>
+	</rule>
+
+    <rule ref="WordPress.Files.FileName.NotHyphenatedLowercase">
+		<exclude-pattern>/inc/*</exclude-pattern>
+        <exclude-pattern>/inc/Installer.php</exclude-pattern>
+        <exclude-pattern>inc/AdminPanel.php</exclude-pattern>
+        <exclude-pattern>inc/FrontendPanel.php</exclude-pattern>
+	</rule>
+    <!-- Exclude basic project directories -->
+    <exclude-pattern>inc/AdminPanel.php</exclude-pattern>
+    <exclude-pattern>inc/FrontendPanel.php</exclude-pattern>
+    <exclude-pattern>*/.idea/*</exclude-pattern>
+    <exclude-pattern>*/.github/*</exclude-pattern>
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+    <exclude-pattern>*/assets/*</exclude-pattern>
+    <exclude-pattern>wp-content/uploads/</exclude-pattern>
+    <exclude-pattern>*/inc/*</exclude-pattern>
+</ruleset>

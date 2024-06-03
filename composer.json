@@ -1,0 +1,37 @@
+{
+    "name": "make/magic",
+    "description": "make magic plugin.",
+    "type": "wordpress-plugin",
+    "license": "GPLv2",
+    "autoload": {
+        "psr-4": {
+            "MakeMagic\\": "inc/"
+        },
+        "files": [ "inc/functions.php" ]
+    },
+    "authors": [
+        {
+            "name": "Shah Zobayer Ahmed",
+            "email": "shahzobayer@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+  
+    "config": {
+        "platform": {
+            "php": "7.4"
+        },
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "require-dev": {
+        "wp-coding-standards/wpcs": "^3.0",
+        "phpcompatibility/phpcompatibility-wp": "*",
+        "squizlabs/php_codesniffer": "*"
+    },
+    "scripts": {
+        "phpcs": "phpcs --standard=./phpcs.xml",
+        "phpcbf": "phpcbf --standard=./phpcs.xml"
+    }
+}
