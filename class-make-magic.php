@@ -89,8 +89,8 @@ final class Make_Magic {
 		// Checking admin or frontend.
 		if ( is_admin() ) {
 			// Enqueue all admin styles and scripts.
-		} else {
 			new MakeMagic\AdminPanel();
+		} else {
 			// Manage all frontend functionality.
 			new MakeMagic\FrontendPanel();
 		}

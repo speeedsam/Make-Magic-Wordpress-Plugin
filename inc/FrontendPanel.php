@@ -57,11 +57,12 @@ class FrontendPanel {
 	 * Shortcode for form submission.
 	 */
 	public function makemagic_shortcode() {
-		if ( isset( $_POST['_nonce'] ) && wp_verify_nonce( sanitize_key( $_POST['_nonce'] ), 'makemagic_nonce' ) ) {
+ 
+        if ( isset( $_POST['_nonce'] ) && wp_verify_nonce( sanitize_key( $_POST['_nonce'] ), 'makemagic_nonce' ) ) {
 			if ( isset( $_POST['thing_name'] ) ) {
 				$thing_name_sanitized = sanitize_text_field( wp_unslash( $_POST['thing_name'] ) ); // Unslash the input.
 
-				makemagic_insert_data( $thing_name_sanitized ); // Insert the sanitized data into the database.
+                $result = makemagic_insert_data( $thing_name_sanitized ); // Insert the sanitized data into the database.
 			}
 		}
 
@@ -70,8 +71,12 @@ class FrontendPanel {
 		<form method="POST">
 			<input type="hidden" name="_nonce" value="<?php echo esc_attr( wp_create_nonce( 'makemagic_nonce' ) ); ?>">
 			<input type="text" name="thing_name" required>
-			<input type="submit" value="Submit">
+			<input type="submit" value="<?php echo esc_attr__('Add Name', 'make-magic'); ?>">
 		</form>
+        <?php if ( $result ) :
+            ?>
+            <p><?php echo esc_html__( $result , 'make-magic' ); ?></p>
+        <?php endif; ?>
 		<?php
 		return ob_get_clean();
 	}

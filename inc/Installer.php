@@ -65,7 +65,6 @@ class Installer {
 			$sql_thing_table = "CREATE TABLE $thing_table (
                 id mediumint(9) NOT NULL AUTO_INCREMENT,
                 thing_name varchar(255) NOT NULL,
-                thing_description varchar(255) NOT NULL,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                 PRIMARY KEY (id)

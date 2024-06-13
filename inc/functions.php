@@ -17,7 +17,7 @@ function makemagic_insert_data( $name ) {
 	$name       = sanitize_text_field( $name );
 	$table_name = $wpdb->prefix . 'makemagic_things';
 
-    $wpdb->insert( // phpcs:ignore.
+    $result = $wpdb->insert( // phpcs:ignore.
 		$table_name,
 		array(
 			'thing_name' => $name,
@@ -26,6 +26,9 @@ function makemagic_insert_data( $name ) {
 			'%s', // Data format for 'thing_name' column (string).
 		)
 	);
+    if($result){
+        return 'Data inserted successfully!';
+    }
 }
 
 /**
